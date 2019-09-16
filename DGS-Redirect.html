@@ -1,0 +1,21 @@
+<!-- Redirects to the current day's Daily Guest Summaries excel file, in Web view. -->
+<!-- PR 2019 -->
+<!-- CHANGELOG: Version 2: Redirects directly to the file rather than its folder. -->
+<head>
+<script>
+// if the hour is 0-11 (i.e. midnight-11:59AM): use previous day, since those are the folks signed in.
+// noon onward gets the current day.
+var today = new Date()
+today.setHours(today.getHours()-12) // go back in time 12 hours
+var year = today.getFullYear(); // (normal 4 digit year)
+var month = (today.getMonth() + 1).toString(); // getMonth() is 0-based, get '1'-'12' this way
+if (month.length === 1) { longMonth = '0' + month } else { longMonth = month } // '01'-'12'
+
+// calculate and go to excel web edit URL!
+location.href="https://rootsinfo.sharepoint.com/sites/AllStaff/Shared Documents/FORMS -- shelter/DAILY GUEST SUMMARIES/"+year+" Daily Guest Summary Archive/"+longMonth+"-"+year+" Daily Guest Summaries/"+month+"-"+today.getDate().toString()+"-"+year+" Daily Guest Summary.xlsx?web=1"
+
+// N.B.: Older DGS filenames are inconsistently named. Actual examples: 02-1-2016; 01-01-2017; 1-01-2019; 2-1-2019.
+// This script requires that staff persists the latest pattern, namely, no leading 0s in the filename.
+</script>
+</head>
+Redirecting
