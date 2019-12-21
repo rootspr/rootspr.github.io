@@ -1,0 +1,16 @@
+<head>
+<script>
+// if the date is last 2 days of month: use next month, since that's where new timseheet data goes
+var today = new Date()
+today.setHours(today.getHours()+48) // go forward in time 48 hours
+var monthList = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+var shortmonth = monthList[today.getMonth()]
+var year = today.getFullYear()
+
+var name = (new URLSearchParams(window.location.search)).get('name')
+
+// calculate and go to excel web edit URL!
+location.href="https://rootsinfo-my.sharepoint.com/personal/p" + name + "r_rootsinfo_org/Documents/TIMESHEET%20P" + name + "%20R-PM%20" + shortmonth + "%20" + year + "%20ROOTS.xlsx?web=1"
+</script>
+</head>
+Redirecting
