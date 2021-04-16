@@ -1,0 +1,24 @@
+<!-- Redirects to the current day's Daily Shelter Report doc, *in word* -->
+<!-- PR 2021 -->
+<!-- CHANGELOG: - -->
+<head>
+<script>
+// if the hour is 0-11 (i.e. midnight-11:59AM): use previous day, since that is the relevant report
+// noon onward gets the current day.
+var today = new Date()
+today.setHours(today.getHours()-12) // go back in time 12 hours
+var year = today.getFullYear().toString().substr(2,2); // (2-digit year)
+var month = (today.getMonth() + 1).toString(); // getMonth() is 0-based, get '1'-'12' this way
+var longMonth;
+if (month.length === 1) { longMonth = '0' + month } else { longMonth = month } // '01'-'12'
+var day = (today.getDate()).toString();
+var longDay;
+if (day.length === 1) { longDay = '0' + day } else { longDay = day } // '01'-'31'
+
+// calculate and go to sharepoint open-in-word URL!
+location.href="ms-word:ofe|u|https://rootsinfo.sharepoint.com/sites/AllStaff/Shared Documents/FORMS -- shelter/DAILY REPORT/Shelter Report "+longMonth+"."+day+"."+year+".docx"
+
+// This script requires that staff persists the latest pattern, namely, no leading 0s in the filename.
+</script>
+</head>
+Redirecting
